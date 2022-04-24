@@ -1,0 +1,413 @@
+- id: '1632886727730'
+  name: Wind Down
+  entities:
+    light.led_strip:
+      effect_list:
+      - blue_fade
+      - blue_strobe
+      - colorjump
+      - colorloop
+      - colorstrobe
+      - cyan_fade
+      - cyan_strobe
+      - cycle_rgb
+      - cycle_seven_colors
+      - gb_cross_fade
+      - green_fade
+      - green_strobe
+      - purple_fade
+      - purple_strobe
+      - rb_cross_fade
+      - red_fade
+      - red_strobe
+      - rg_cross_fade
+      - rgb_cross_fade
+      - white_fade
+      - white_strobe
+      - yellow_fade
+      - yellow_strobe
+      - random
+      supported_color_modes:
+      - rgb
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip
+      supported_features: 36
+      color_mode: rgb
+      brightness: 33
+      hs_color:
+      - 9.176
+      - 100
+      rgb_color:
+      - 255
+      - 39
+      - 0
+      xy_color:
+      - 0.691
+      - 0.308
+      state: 'on'
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    switch.desk_lamp_led:
+      icon: mdi:led-on
+      friendly_name: Desk Lamp LED
+      state: 'on'
+    switch.adaptive_led_strip:
+      brightness_pct:
+      color_temp_kelvin:
+      color_temp_mired:
+      rgb_color:
+      xy_color:
+      hs_color:
+      sun_position:
+      icon: mdi:theme-light-dark
+      friendly_name: Adaptive LED Strip
+      state: 'off'
+  icon: mdi:power-sleep
+- id: '1632886773679'
+  name: Sleep
+  entities:
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    switch.desk_lamp_led:
+      icon: mdi:led-on
+      friendly_name: Desk Lamp LED
+      state: 'on'
+    light.led_strip:
+      effect_list:
+      - blue_fade
+      - blue_strobe
+      - colorjump
+      - colorloop
+      - colorstrobe
+      - cyan_fade
+      - cyan_strobe
+      - cycle_rgb
+      - cycle_seven_colors
+      - gb_cross_fade
+      - green_fade
+      - green_strobe
+      - purple_fade
+      - purple_strobe
+      - rb_cross_fade
+      - red_fade
+      - red_strobe
+      - rg_cross_fade
+      - rgb_cross_fade
+      - white_fade
+      - white_strobe
+      - yellow_fade
+      - yellow_strobe
+      - random
+      supported_color_modes:
+      - rgb
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip
+      supported_features: 36
+      state: 'off'
+    number.led_strip_effect_speed:
+      min: 1
+      max: 100
+      step: 1
+      mode: slider
+      ip_address: 10.69.100.16
+      icon: mdi:speedometer
+      friendly_name: LED Strip Effect Speed
+      state: '90'
+    select.led_strip_wiring:
+      options:
+      - RGB
+      - GRB
+      - BRG
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip Wiring
+      state: GRB
+    switch.adaptive_led_strip:
+      brightness_pct:
+      color_temp_kelvin:
+      color_temp_mired:
+      rgb_color:
+      xy_color:
+      hs_color:
+      sun_position:
+      icon: mdi:theme-light-dark
+      friendly_name: Adaptive LED Strip
+      state: 'off'
+  icon: mdi:bed
+- id: '1632887374082'
+  name: Home
+  entities:
+    automation.turn_on_humidifier_when_humidity_is_low:
+      last_triggered: '2022-04-21T02:48:31.157500+00:00'
+      mode: single
+      current: 0
+      id: '1638224485831'
+      friendly_name: Turn on Humidifier when Humidity is Low
+      state: 'on'
+    light.led_strip:
+      effect_list:
+      - blue_fade
+      - blue_strobe
+      - colorjump
+      - colorloop
+      - colorstrobe
+      - cyan_fade
+      - cyan_strobe
+      - cycle_rgb
+      - cycle_seven_colors
+      - gb_cross_fade
+      - green_fade
+      - green_strobe
+      - purple_fade
+      - purple_strobe
+      - rb_cross_fade
+      - red_fade
+      - red_strobe
+      - rg_cross_fade
+      - rgb_cross_fade
+      - white_fade
+      - white_strobe
+      - yellow_fade
+      - yellow_strobe
+      - random
+      supported_color_modes:
+      - rgb
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip
+      supported_features: 36
+      color_mode: rgb
+      brightness: 3
+      hs_color:
+      - 240
+      - 100
+      rgb_color:
+      - 0
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      state: 'on'
+    number.led_strip_effect_speed:
+      min: 1
+      max: 100
+      step: 1
+      mode: slider
+      ip_address: 10.69.100.16
+      icon: mdi:speedometer
+      friendly_name: LED Strip Effect Speed
+      state: '90'
+    select.led_strip_wiring:
+      options:
+      - RGB
+      - GRB
+      - BRG
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip Wiring
+      state: GRB
+    switch.adaptive_led_strip:
+      brightness_pct: 13.054268124890276
+      color_temp_kelvin: 2000
+      color_temp_mired: 500
+      rgb_color:
+      - 255
+      - 136.86832541739756
+      - 13.904070298965905
+      xy_color:
+      - 0.598
+      - 0.383
+      hs_color:
+      - 30.504
+      - 93.333
+      sun_position: -0.8210162638913272
+      icon: mdi:theme-light-dark
+      friendly_name: Adaptive LED Strip
+      manual_control: []
+      state: 'on'
+  icon: mdi:home
+- id: '1632970010659'
+  name: Away
+  entities:
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    switch.desk_lamp_led:
+      icon: mdi:led-on
+      friendly_name: Desk Lamp LED
+      state: 'on'
+    switch.humidifier:
+      icon: mdi:air-humidifier
+      friendly_name: Humidifier
+      state: 'off'
+    switch.humidifier_led:
+      icon: mdi:led-on
+      friendly_name: Humidifier LED
+      state: 'on'
+    automation.turn_on_humidifier_when_humidity_is_low:
+      last_triggered: '2022-04-20T20:05:16.732755+00:00'
+      mode: single
+      current: 0
+      id: '1638224485831'
+      friendly_name: Turn on Humidifier when Humidity is Low
+      state: 'off'
+    light.led_strip:
+      effect_list:
+      - blue_fade
+      - blue_strobe
+      - colorjump
+      - colorloop
+      - colorstrobe
+      - cyan_fade
+      - cyan_strobe
+      - cycle_rgb
+      - cycle_seven_colors
+      - gb_cross_fade
+      - green_fade
+      - green_strobe
+      - purple_fade
+      - purple_strobe
+      - rb_cross_fade
+      - red_fade
+      - red_strobe
+      - rg_cross_fade
+      - rgb_cross_fade
+      - white_fade
+      - white_strobe
+      - yellow_fade
+      - yellow_strobe
+      - random
+      supported_color_modes:
+      - rgb
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip
+      supported_features: 36
+      state: 'off'
+    number.led_strip_effect_speed:
+      min: 1
+      max: 100
+      step: 1
+      mode: slider
+      ip_address: 10.69.100.16
+      icon: mdi:speedometer
+      friendly_name: LED Strip Effect Speed
+      state: '90'
+    select.led_strip_wiring:
+      options:
+      - RGB
+      - GRB
+      - BRG
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip Wiring
+      state: GRB
+    switch.adaptive_led_strip:
+      brightness_pct:
+      color_temp_kelvin:
+      color_temp_mired:
+      rgb_color:
+      xy_color:
+      hs_color:
+      sun_position:
+      icon: mdi:theme-light-dark
+      friendly_name: Adaptive LED Strip
+      state: 'off'
+  icon: mdi:city
+- id: '1645736663408'
+  name: Night
+  entities:
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    switch.desk_lamp_led:
+      icon: mdi:led-on
+      friendly_name: Desk Lamp LED
+      state: 'on'
+    light.desk_lamp:
+      supported_color_modes:
+      - onoff
+      icon: mdi:desk-lamp
+      friendly_name: Desk Lamp
+      supported_features: 0
+      state: 'off'
+    light.led_strip:
+      effect_list:
+      - blue_fade
+      - blue_strobe
+      - colorjump
+      - colorloop
+      - colorstrobe
+      - cyan_fade
+      - cyan_strobe
+      - cycle_rgb
+      - cycle_seven_colors
+      - gb_cross_fade
+      - green_fade
+      - green_strobe
+      - purple_fade
+      - purple_strobe
+      - rb_cross_fade
+      - red_fade
+      - red_strobe
+      - rg_cross_fade
+      - rgb_cross_fade
+      - white_fade
+      - white_strobe
+      - yellow_fade
+      - yellow_strobe
+      - random
+      supported_color_modes:
+      - rgb
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip
+      supported_features: 36
+      color_mode: rgb
+      brightness: 20
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      state: 'on'
+    number.led_strip_effect_speed:
+      min: 1
+      max: 100
+      step: 1
+      mode: slider
+      ip_address: 10.69.100.16
+      icon: mdi:speedometer
+      friendly_name: LED Strip Effect Speed
+      state: '90'
+    select.led_strip_wiring:
+      options:
+      - RGB
+      - GRB
+      - BRG
+      ip_address: 10.69.100.16
+      icon: mdi:led-strip-variant
+      friendly_name: LED Strip Wiring
+      state: GRB
+    switch.adaptive_led_strip:
+      brightness_pct:
+      color_temp_kelvin:
+      color_temp_mired:
+      rgb_color:
+      xy_color:
+      hs_color:
+      sun_position:
+      icon: mdi:theme-light-dark
+      friendly_name: Adaptive LED Strip
+      state: 'off'
+  icon: mdi:weather-night

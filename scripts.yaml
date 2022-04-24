@@ -1,0 +1,132 @@
+flash_led_strip_rgb:
+  alias: Flash LED Strip RGB
+  sequence:
+  - service: scene.create
+    data:
+      scene_id: cache_before
+      snapshot_entities:
+      - light.led_strip
+  - service: light.turn_on
+    target:
+      entity_id: light.led_strip
+    data:
+      color_name: red
+      brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    target:
+      entity_id: light.led_strip
+    data:
+      color_name: green
+      brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    target:
+      entity_id: light.led_strip
+    data:
+      color_name: blue
+      brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - scene: scene.cache_before
+  - service: script.restart_adaptive_lighting
+    data: {}
+  mode: single
+  icon: mdi:led-strip-variant
+flash_led_strip_red:
+  alias: Flash LED Strip Red
+  sequence:
+  - service: scene.create
+    data:
+      scene_id: cache_before
+      snapshot_entities:
+      - light.led_strip
+  - service: light.turn_on
+    target:
+      entity_id: light.led_strip
+    data:
+      color_name: red
+      brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - scene: scene.cache_before
+  - service: script.restart_adaptive_lighting
+    data: {}
+  mode: single
+  icon: mdi:led-strip
+turn_on_humidifier_if_humidity_low:
+  alias: Turn on Humidifier if Humidity is Low
+  sequence:
+  - condition: numeric_state
+    entity_id: sensor.ble_humidity
+    below: '38'
+  - type: turn_on
+    device_id: 356b46c3a8f7b3b04a6248756da7be33
+    entity_id: switch.humidifier
+    domain: switch
+  mode: single
+  icon: mdi:air-humidifier
+restart_adaptive_lighting:
+  alias: Restart Adaptive Lighting
+  sequence:
+  - condition: state
+    entity_id: switch.adaptive_led_strip
+    state: 'on'
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_led_strip
+      - switch.adaptive_led_strip_sleep_mode
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_led_strip
+      - switch.adaptive_led_strip_adapt_brightness
+      - switch.adaptive_led_strip_adapt_color
+  mode: single
+  icon: mdi:theme-light-dark
+flash_led_strip_magenta:
+  alias: Flash LED Strip Magenta
+  sequence:
+  - service: scene.create
+    data:
+      scene_id: cache_before
+      snapshot_entities:
+      - light.led_strip
+  - service: light.turn_on
+    target:
+      entity_id: light.led_strip
+    data:
+      color_name: magenta
+      brightness_pct: 80
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - scene: scene.cache_before
+  - service: script.restart_adaptive_lighting
+    data: {}
+  mode: single
+  icon: mdi:led-strip

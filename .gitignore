@@ -1,0 +1,22 @@
+# Exclude all hidden files
+.*
+
+# Exclude HACS custom components
+custom_components/
+
+# Exclude log and history
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.log.*
+
+# Exclude secrets
+host_keys/
+ip_bans.yaml
+iphonedetect.yaml
+known_devices.yaml
+secrets.yaml
+
+# Explicitly include .gitignore
+!.gitignore

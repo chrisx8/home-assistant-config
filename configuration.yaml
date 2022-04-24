@@ -1,0 +1,70 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+auth_header:
+  username_header: OIDC_CLAIM_sub
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ssl_profile: modern
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.69.0.12/32
+
+panel_custom:
+  - name: sso_logout
+    sidebar_title: "~SSO Logout~"
+    sidebar_icon: mdi:logout
+    module_url: /local/sso-logout.js
+
+history:
+  exclude:
+    entities:
+      - binary_sensor.workday
+      - sensor.local_ip
+    entity_globs:
+      - sensor.date_time*
+      - sun.*
+      - weather.*
+
+logbook:
+  exclude:
+    entities:
+      - binary_sensor.workday
+      - sensor.local_ip
+    entity_globs:
+      - sensor.date_time*
+      - sun.*
+      - weather.*
+
+binary_sensor:
+  - platform: workday
+    name: Workday
+    country: US
+
+device_tracker:
+  - platform: iphonedetect
+    consider_home: 60
+    new_device_defaults:
+      track_new_devices: true
+    hosts: !include iphonedetect.yaml
+
+sensor:
+  - platform: time_date
+    display_options:
+      - 'date_time'
+      - 'date_time_utc'
+
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml

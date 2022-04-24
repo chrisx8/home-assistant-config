@@ -1,0 +1,183 @@
+- id: '1633184201223'
+  alias: Left Home
+  description: ''
+  trigger:
+  - platform: state
+    to: not_home
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    entity_id: person.chris
+  condition: []
+  action:
+  - scene: scene.away
+  - service: notify.notify
+    data:
+      message: You're away
+      data:
+        tag: ha-presence
+  mode: single
+- id: '1633184386989'
+  alias: Welcome Home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.chris
+    to: home
+  condition: []
+  action:
+  - scene: scene.home
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: script.restart_adaptive_lighting
+    data: {}
+  - service: notify.notify
+    data:
+      message: Welcome home!
+      data:
+        tag: ha-presence
+  mode: single
+- id: '1638224485831'
+  alias: Turn on Humidifier when Humidity is Low
+  description: Low humidity = 36%
+  trigger:
+  - type: humidity
+    platform: device
+    device_id: b80c9d454bc15d2ef5e08af99f22b997
+    entity_id: sensor.ble_humidity
+    domain: sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+    below: 36
+  condition:
+  - condition: state
+    entity_id: person.chris
+    state: home
+  action:
+  - type: turn_on
+    device_id: 356b46c3a8f7b3b04a6248756da7be33
+    entity_id: switch.humidifier
+    domain: switch
+  mode: single
+- id: '1638224515169'
+  alias: Turn off Humidifier when Humidity is OK
+  description: OK = 40%
+  trigger:
+  - type: humidity
+    platform: device
+    device_id: b80c9d454bc15d2ef5e08af99f22b997
+    entity_id: sensor.ble_humidity
+    domain: sensor
+    above: 40
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 356b46c3a8f7b3b04a6248756da7be33
+    entity_id: switch.humidifier
+    domain: switch
+  mode: single
+- id: '1641230630111'
+  alias: Weather Alert Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.nws_alerts
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.nws_alerts
+    above: '0'
+  action:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.nws_alerts
+        above: '1'
+      sequence:
+      - service: notify.notify
+        data:
+          title: ⚠️ {{ states('sensor.nws_alerts') }} Weather Alerts
+          message: '{{ state_attr(''sensor.nws_alerts'', ''title'').replace('' -'', '','') }}'
+          data:
+            tag: ha-weather-alert
+            url: /lovelace/weather
+            clickAction: /lovelace/weather
+            push:
+              interruption-level: time-sensitive
+    default:
+    - service: notify.notify
+      data:
+        title: ⚠️ {{ state_attr('sensor.nws_alerts', 'title') }}
+        message: '{{ state_attr(''sensor.nws_alerts'', ''spoken_desc'')|lower }}'
+        data:
+          tag: ha-weather-alert
+          url: /lovelace-weather
+          clickAction: /lovelace-weather
+          push:
+            interruption-level: time-sensitive
+  - service: persistent_notification.create
+    data:
+      notification_id: ha-weather-alert
+      title: ⚠️ Weather Alerts
+      message: '
+        {% set count = int(states(''sensor.nws_alerts'')) %}
+        {% if count %}
+        {% set title = state_attr(''sensor.nws_alerts'', ''title'').split(" - ") %}
+        {% set desc = state_attr(''sensor.nws_alerts'', ''display_desc'').split(''\n\n-\n\n\n'') %}
+        {% endif %}
+        {% for i in range(count) %}
+        ### {{ title[i] }}
+
+        {{ desc[i] }}
+        {% endfor %}'
+  - type: is_off
+    condition: device
+    device_id: 9adfdf8891ce2ba4d743d7a979c67ffb
+    entity_id: binary_sensor.chriss_iphone_focus
+    domain: binary_sensor
+  - service: script.flash_led_strip_magenta
+    data: {}
+  mode: single
+- id: '1643840682503'
+  alias: Weather Alert Notification - Clear
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.nws_alerts
+    below: '1'
+  condition: []
+  action:
+  - service: notify.notify
+    data:
+      message: clear_notification
+      data:
+        tag: ha-weather-alert
+  - service: persistent_notification.dismiss
+    data:
+      notification_id: ha-weather-alert
+  mode: single
+- id: '1646682285418'
+  alias: Home Assistant has started
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: notify.notify
+    data:
+      message: Home Assistant has started!
+      data:
+        tag: ha-startup
+  mode: single
