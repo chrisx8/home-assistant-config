@@ -35,6 +35,8 @@
       milliseconds: 0
   - service: script.restart_adaptive_lighting
     data: {}
+  - service: script.turn_on_humidifier_if_humidity_low
+    data: {}
   - service: notify.notify
     data:
       message: Welcome home!
