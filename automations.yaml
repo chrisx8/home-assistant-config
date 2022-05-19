@@ -50,14 +50,13 @@
   - type: humidity
     platform: device
     device_id: b80c9d454bc15d2ef5e08af99f22b997
-    entity_id: sensor.ble_humidity
+    entity_id: sensor.ble_temperature_humidity_sensor_humidity
     domain: sensor
+    below: 36
     for:
       hours: 0
       minutes: 1
       seconds: 0
-      milliseconds: 0
-    below: 36
   condition:
   - condition: state
     entity_id: person.chris
@@ -75,14 +74,9 @@
   - type: humidity
     platform: device
     device_id: b80c9d454bc15d2ef5e08af99f22b997
-    entity_id: sensor.ble_humidity
+    entity_id: sensor.ble_temperature_humidity_sensor_humidity
     domain: sensor
     above: 40
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-      milliseconds: 0
   condition: []
   action:
   - type: turn_off
@@ -110,7 +104,8 @@
       - service: notify.notify
         data:
           title: ⚠️ {{ states('sensor.nws_alerts') }} Weather Alerts
-          message: '{{ state_attr(''sensor.nws_alerts'', ''title'').replace('' -'', '','') }}'
+          message: '{{ state_attr(''sensor.nws_alerts'', ''title'').replace('' -'',
+            '','') }}'
           data:
             tag: ha-weather-alert
             url: /lovelace/weather
@@ -132,17 +127,12 @@
     data:
       notification_id: ha-weather-alert
       title: ⚠️ Weather Alerts
-      message: '
-        {% set count = int(states(''sensor.nws_alerts'')) %}
-        {% if count %}
-        {% set title = state_attr(''sensor.nws_alerts'', ''title'').split(" - ") %}
-        {% set desc = state_attr(''sensor.nws_alerts'', ''display_desc'').split(''\n\n-\n\n\n'') %}
-        {% endif %}
-        {% for i in range(count) %}
-        ### {{ title[i] }}
+      message: ' {% set count = int(states(''sensor.nws_alerts'')) %} {% if count
+        %} {% set title = state_attr(''sensor.nws_alerts'', ''title'').split(" - ")
+        %} {% set desc = state_attr(''sensor.nws_alerts'', ''display_desc'').split(''\n\n-\n\n\n'')
+        %} {% endif %} {% for i in range(count) %} ### {{ title[i] }}
 
-        {{ desc[i] }}
-        {% endfor %}'
+        {{ desc[i] }} {% endfor %}'
   - type: is_off
     condition: device
     device_id: 9adfdf8891ce2ba4d743d7a979c67ffb

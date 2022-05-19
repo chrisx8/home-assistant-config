@@ -72,7 +72,7 @@ turn_on_humidifier_if_humidity_low:
   alias: Turn on Humidifier if Humidity is Low
   sequence:
   - condition: numeric_state
-    entity_id: sensor.ble_humidity
+    entity_id: sensor.ble_temperature_humidity_sensor_humidity
     below: '38'
   - type: turn_on
     device_id: 356b46c3a8f7b3b04a6248756da7be33

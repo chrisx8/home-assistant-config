@@ -25,7 +25,7 @@ history:
   exclude:
     entities:
       - binary_sensor.workday
-      - sensor.local_ip
+      - sensor.external_ip
     entity_globs:
       - sensor.date_time*
       - sun.*
@@ -35,7 +35,7 @@ logbook:
   exclude:
     entities:
       - binary_sensor.workday
-      - sensor.local_ip
+      - sensor.external_ip
     entity_globs:
       - sensor.date_time*
       - sun.*
