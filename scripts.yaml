@@ -130,3 +130,12 @@ flash_led_strip_magenta:
     data: {}
   mode: single
   icon: mdi:led-strip
+watchman_report:
+  alias: Watchman Report
+  sequence:
+  - service: watchman.report
+    data:
+      create_file: false
+      send_notification: true
+  mode: single
+  icon: mdi:file-chart
