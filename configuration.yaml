@@ -50,7 +50,12 @@ device_tracker:
     consider_home: 60
     new_device_defaults:
       track_new_devices: true
-    hosts: !include iphonedetect.yaml
+    hosts: !secret iphonedetect_hosts
+
+notify:
+  - platform: telegram
+    name: Telegram Group
+    chat_id: !secret telegram_chat_id
 
 sensor:
   - platform: time_date
@@ -60,6 +65,12 @@ sensor:
 
 tts:
   - platform: google_translate
+
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_id
 
 group: !include groups.yaml
 automation: !include automations.yaml

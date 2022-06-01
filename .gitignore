@@ -14,7 +14,6 @@ custom_components/
 # Exclude secrets
 host_keys/
 ip_bans.yaml
-iphonedetect.yaml
 known_devices.yaml
 secrets.yaml
 
