@@ -18,7 +18,7 @@ history:
       - binary_sensor.workday
       - sensor.external_ip
     entity_globs:
-      - sensor.date_time*
+      - sensor.date*
       - sun.*
       - weather.*
 
@@ -28,7 +28,7 @@ logbook:
       - binary_sensor.workday
       - sensor.external_ip
     entity_globs:
-      - sensor.date_time*
+      - sensor.date*
       - sun.*
       - weather.*
 
@@ -38,11 +38,10 @@ binary_sensor:
     country: US
 
 device_tracker:
-  - platform: iphonedetect
-    consider_home: 60
+  - platform: ping
     new_device_defaults:
       track_new_devices: true
-    hosts: !secret iphonedetect_hosts
+    hosts: !secret ping_hosts
 
 notify:
   - platform: telegram
@@ -52,8 +51,10 @@ notify:
 sensor:
   - platform: time_date
     display_options:
-      - 'date_time'
-      - 'date_time_utc'
+      - date
+      - date_time
+      - date_time_iso
+      - date_time_utc
 
 tts:
   - platform: google_translate
