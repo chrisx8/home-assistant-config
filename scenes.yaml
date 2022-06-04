@@ -29,7 +29,7 @@
       - random
       supported_color_modes:
       - rgb
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip
       supported_features: 36
@@ -46,13 +46,6 @@
       - 0.691
       - 0.308
       state: 'on'
-    switch.desk_lamp:
-      friendly_name: Desk Lamp
-      state: 'off'
-    switch.desk_lamp_led:
-      icon: mdi:led-on
-      friendly_name: Desk Lamp LED
-      state: 'on'
     switch.adaptive_led_strip:
       brightness_pct:
       color_temp_kelvin:
@@ -64,17 +57,28 @@
       icon: mdi:theme-light-dark
       friendly_name: Adaptive LED Strip
       state: 'off'
-  icon: mdi:power-sleep
-- id: '1632886773679'
-  name: Sleep
-  entities:
     switch.desk_lamp:
       friendly_name: Desk Lamp
       state: 'off'
-    switch.desk_lamp_led:
-      icon: mdi:led-on
-      friendly_name: Desk Lamp LED
-      state: 'on'
+    light.desk_lamp:
+      supported_color_modes:
+      - onoff
+      friendly_name: Desk Lamp
+      supported_features: 0
+      state: 'off'
+  icon: mdi:power-sleep
+  metadata:
+    switch.adaptive_led_strip:
+      entity_only: true
+    light.led_strip:
+      entity_only: false
+    switch.desk_lamp:
+      entity_only: false
+    light.desk_lamp:
+      entity_only: false
+- id: '1632886773679'
+  name: Sleep
+  entities:
     light.led_strip:
       effect_list:
       - blue_fade
@@ -103,7 +107,7 @@
       - random
       supported_color_modes:
       - rgb
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip
       supported_features: 36
@@ -113,7 +117,7 @@
       max: 100
       step: 1
       mode: slider
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:speedometer
       friendly_name: LED Strip Effect Speed
       state: '90'
@@ -122,7 +126,7 @@
       - RGB
       - GRB
       - BRG
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip Wiring
       state: GRB
@@ -137,7 +141,29 @@
       icon: mdi:theme-light-dark
       friendly_name: Adaptive LED Strip
       state: 'off'
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    light.desk_lamp:
+      supported_color_modes:
+      - onoff
+      friendly_name: Desk Lamp
+      supported_features: 0
+      state: 'off'
   icon: mdi:bed
+  metadata:
+    switch.adaptive_led_strip:
+      entity_only: true
+    light.led_strip:
+      entity_only: false
+    number.led_strip_effect_speed:
+      entity_only: false
+    select.led_strip_wiring:
+      entity_only: false
+    switch.desk_lamp:
+      entity_only: false
+    light.desk_lamp:
+      entity_only: false
 - id: '1632887374082'
   name: Home
   entities:
@@ -234,13 +260,6 @@
 - id: '1632970010659'
   name: Away
   entities:
-    switch.desk_lamp:
-      friendly_name: Desk Lamp
-      state: 'off'
-    switch.desk_lamp_led:
-      icon: mdi:led-on
-      friendly_name: Desk Lamp LED
-      state: 'on'
     switch.humidifier:
       icon: mdi:air-humidifier
       friendly_name: Humidifier
@@ -250,7 +269,7 @@
       friendly_name: Humidifier LED
       state: 'on'
     automation.turn_on_humidifier_when_humidity_is_low:
-      last_triggered: '2022-04-20T20:05:16.732755+00:00'
+      last_triggered: '2022-05-02T01:46:19.823275+00:00'
       mode: single
       current: 0
       id: '1638224485831'
@@ -284,7 +303,7 @@
       - random
       supported_color_modes:
       - rgb
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip
       supported_features: 36
@@ -294,7 +313,7 @@
       max: 100
       step: 1
       mode: slider
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:speedometer
       friendly_name: LED Strip Effect Speed
       state: '90'
@@ -303,7 +322,7 @@
       - RGB
       - GRB
       - BRG
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip Wiring
       state: GRB
@@ -318,24 +337,34 @@
       icon: mdi:theme-light-dark
       friendly_name: Adaptive LED Strip
       state: 'off'
-  icon: mdi:city
-- id: '1645736663408'
-  name: Night
-  entities:
     switch.desk_lamp:
       friendly_name: Desk Lamp
       state: 'off'
-    switch.desk_lamp_led:
-      icon: mdi:led-on
-      friendly_name: Desk Lamp LED
-      state: 'on'
     light.desk_lamp:
       supported_color_modes:
       - onoff
-      icon: mdi:desk-lamp
       friendly_name: Desk Lamp
       supported_features: 0
       state: 'off'
+  icon: mdi:city
+  metadata:
+    automation.turn_on_humidifier_when_humidity_is_low:
+      entity_only: true
+    switch.adaptive_led_strip:
+      entity_only: true
+    light.led_strip:
+      entity_only: false
+    number.led_strip_effect_speed:
+      entity_only: false
+    select.led_strip_wiring:
+      entity_only: false
+    switch.desk_lamp:
+      entity_only: false
+    light.desk_lamp:
+      entity_only: false
+- id: '1645736663408'
+  name: Night
+  entities:
     light.led_strip:
       effect_list:
       - blue_fade
@@ -364,7 +393,7 @@
       - random
       supported_color_modes:
       - rgb
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip
       supported_features: 36
@@ -386,7 +415,7 @@
       max: 100
       step: 1
       mode: slider
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:speedometer
       friendly_name: LED Strip Effect Speed
       state: '90'
@@ -395,7 +424,7 @@
       - RGB
       - GRB
       - BRG
-      ip_address: 10.69.100.16
+      ip_address: 10.69.100.29
       icon: mdi:led-strip-variant
       friendly_name: LED Strip Wiring
       state: GRB
@@ -410,4 +439,26 @@
       icon: mdi:theme-light-dark
       friendly_name: Adaptive LED Strip
       state: 'off'
+    switch.desk_lamp:
+      friendly_name: Desk Lamp
+      state: 'off'
+    light.desk_lamp:
+      supported_color_modes:
+      - onoff
+      friendly_name: Desk Lamp
+      supported_features: 0
+      state: 'off'
   icon: mdi:weather-night
+  metadata:
+    switch.adaptive_led_strip:
+      entity_only: true
+    light.led_strip:
+      entity_only: false
+    number.led_strip_effect_speed:
+      entity_only: false
+    select.led_strip_wiring:
+      entity_only: false
+    switch.desk_lamp:
+      entity_only: false
+    light.desk_lamp:
+      entity_only: false
