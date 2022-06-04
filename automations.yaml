@@ -23,9 +23,15 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: person.chris
+    entity_id:
+    - person.chris
     to: home
-  condition: []
+  condition:
+  - type: is_off
+    condition: device
+    device_id: 9adfdf8891ce2ba4d743d7a979c67ffb
+    entity_id: binary_sensor.chriss_iphone_focus
+    domain: binary_sensor
   action:
   - scene: scene.home
   - delay:
@@ -167,9 +173,49 @@
     event: start
   condition: []
   action:
-  - service: notify.notify
+  - service: notify.telegram_group
     data:
       message: Home Assistant has started!
-      data:
-        tag: ha-startup
+      data: {}
   mode: single
+- id: '1654307227056'
+  alias: Aqara Magic Cube
+  description: ''
+  use_blueprint:
+    path: Mikkelmoeller/aqara-magic-cube-zha-51-actions.yaml
+    input:
+      remote: ea0b7e7c971feddfc138caa9c416c407
+      rotate_right:
+      - device_id: 4f674a14f9eb47d67e01e08629a25ff1
+        domain: light
+        entity_id: light.led_strip
+        type: brightness_increase
+      rotate_left:
+      - device_id: 4f674a14f9eb47d67e01e08629a25ff1
+        domain: light
+        entity_id: light.led_strip
+        type: brightness_decrease
+      cube_slide_any: []
+      slide_any_side: true
+      flip_180: true
+      cube_flip_180: []
+      cube_drop:
+      - service: notify.telegram_group
+        data:
+          message: No dropping things
+          title: Home Assistant
+      knock_any_side: true
+      cube_knock_any:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.sleep
+        metadata: {}
+      cube_shake:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.night
+        metadata: {}
+      flip_90: true
+      cube_flip_90:
+      - service: script.restart_adaptive_lighting
+        data: {}
