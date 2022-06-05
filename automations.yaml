@@ -165,19 +165,6 @@
     data:
       notification_id: ha-weather-alert
   mode: single
-- id: '1646682285418'
-  alias: Home Assistant has started
-  description: ''
-  trigger:
-  - platform: homeassistant
-    event: start
-  condition: []
-  action:
-  - service: notify.telegram_group
-    data:
-      message: Home Assistant has started!
-      data: {}
-  mode: single
 - id: '1654307227056'
   alias: Aqara Magic Cube
   description: ''
