@@ -206,3 +206,33 @@
       cube_flip_90:
       - service: script.restart_adaptive_lighting
         data: {}
+- id: '1654453151539'
+  alias: Wake-up light
+  description: ''
+  use_blueprint:
+    path: sbyx/wake-up-light-alarm-with-sunrise-effect.yaml
+    input:
+      manual_time: 09:00:00
+      light_entity: light.led_strip
+      sunrise_duration: 20
+      end_brightness: 160
+      pre_sunrise_actions:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+          - switch.adaptive_led_strip
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id:
+          - automation.left_home
+          - automation.welcome_home
+      post_sunrise_actions:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id:
+          - automation.welcome_home
+          - automation.left_home
+      min_mired: 70
